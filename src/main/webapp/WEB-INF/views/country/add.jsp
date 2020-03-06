@@ -12,12 +12,13 @@
 
 <h1>Add New Country</h1>
 
-<form:form action="${pageContext.request.contextPath }/country/add"
-           modelAttribute="country">
+<form:form action="${pageContext.request.contextPath }/country/add" enctype="multipart/form-data"
+           modelAttribute="country" >
     <form:input path="countryName"/> <br>
 
-
+    <input type="file" name="file" />
     <input type="submit" name="submit" value="Add Country">
+
 </form:form>
 
 </body>

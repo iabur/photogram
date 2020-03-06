@@ -42,13 +42,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
                 // Only users with allowed roles will be able to access individual endpoints.
 		.and()
 			.authorizeRequests()
-				.antMatchers("/country/show-all").hasAnyRole("MANAGER","PLAYER")
-				.antMatchers("/team/show-all").hasAnyRole("MANAGER","PLAYER")
-				.antMatchers("/member/show-all").hasAnyRole("PLAYER")
-				.antMatchers("/teamManager/show-all").hasAnyRole("MANAGER","PLAYER")
+				.antMatchers("/country/show-all").hasAnyRole("MANAGER","PLAYER","ADMIN")
+				.antMatchers("/team/show-all").hasAnyRole("MANAGER","PLAYER","ADMIN")
+				.antMatchers("/member/show-all").hasAnyRole("PLAYER","ADMIN", "MANAGER")
+				.antMatchers("/teamManager/show-all").hasAnyRole("MANAGER","PLAYER","ADMIN")
 				.antMatchers("/country/**").hasRole("ADMIN")
 				.antMatchers("/team/**").hasRole("ADMIN")
-				.antMatchers("/member/**").hasAnyRole("MANAGER","ADMIN")
+				.antMatchers("/member/**").hasRole("MANAGER")
 				.antMatchers("/teamManager/**").hasRole("ADMIN")
 				// Following line denotes that all requests must be authenticated.
                 // Hence, once a request comes to our application, we will check if the user is authenticated or not.

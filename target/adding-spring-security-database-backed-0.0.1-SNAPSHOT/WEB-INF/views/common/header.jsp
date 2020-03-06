@@ -7,7 +7,9 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Spring By Practical Examples</title>
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath }/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.min.css"/>
+    <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">--%>
+    <script src="${pageContext.request.contextPath }/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 </head>
 <body>

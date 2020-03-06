@@ -1,5 +1,6 @@
 package com.spring5.practice.controllers;
 
+import com.spring5.practice.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,13 +8,21 @@ import org.springframework.web.bind.annotation.*;
 
 import com.spring5.practice.model.Country;
 import com.spring5.practice.service.CountryService;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.ServletContext;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
 public class CountryController {
 
 	@Autowired
 	private CountryService countryService;
-
+	@Autowired
+	ServletContext context;
 	@GetMapping("/country/add")
 	public String addCountry_GET(Model model) {
 		model.addAttribute("pageTitle", "Add Country");
@@ -23,11 +32,23 @@ public class CountryController {
 	}
 
 	@PostMapping("/country/add")
-	public String addCountry(Model model, @ModelAttribute(name = "country") Country country) {
+	public String addCountry(Model model, @ModelAttribute(name = "country") Country country, @RequestParam("file") MultipartFile file) {
 		country.setActive(true);
-		countryService.save(country);
-		model.addAttribute("message", "Country added successfully");
-		return "redirect:/country/show-all";
+		if (file.isEmpty()) {
+			throw new RuntimeException("Please select a file to upload");
+		}
+		try {
+			byte[] bytes = file.getBytes();
+			String absoluteFilePath = context.getRealPath(Constants.UPLOADED_FOLDER);
+			Path path = Paths.get(absoluteFilePath + file.getOriginalFilename());
+			Files.write(path, bytes);
+			country.setLogo(file.getOriginalFilename());
+			countryService.save(country);
+			return "redirect:/country/show-all";
+		}catch (IOException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+
 	}
 	@GetMapping("/country/edit")
 	public String updateCountry(Model model, @RequestParam("id") Long id){

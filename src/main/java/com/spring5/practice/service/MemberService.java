@@ -11,7 +11,6 @@ import com.spring5.practice.repositories.MemberRepository;
 import com.spring5.practice.repositories.TeamRepository;
 import com.spring5.practice.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -96,4 +95,10 @@ public class MemberService {
         return memberRepository.findById(id);
     }
 
+    public List<Member> findByName(String name)
+    {
+
+        var members =  memberRepository.getMemberByQueryString(name);
+        return members;
+    }
 }

@@ -23,11 +23,25 @@ public class Country implements Serializable {
 	private String countryName;
 	@Column(name="is_active")
 	private Boolean active = true;
+	@Column(name = "logo", nullable = false)
+	private String logo;
 
 	public Country() {
 		super();
 	}
 
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
 
 	public boolean isActive() {
 		return active;

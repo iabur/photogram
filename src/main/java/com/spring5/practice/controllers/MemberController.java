@@ -64,5 +64,12 @@ public class MemberController {
         model.addAttribute("members", memberService.getAll());
         return "/member/show-all";
     }
+    @GetMapping(value = "/search-page")
+
+    public String searchCourseView(Model model) {
+
+        return "/member/search";
+
+    }
 }
 
