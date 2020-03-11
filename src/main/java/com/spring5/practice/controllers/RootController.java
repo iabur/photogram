@@ -23,7 +23,7 @@ public class RootController {
 
 	@GetMapping("/")
 	public String root() {
-		return "index";
+		return "admin/index";
 	}
 
 	@GetMapping("/403")
@@ -35,7 +35,7 @@ public class RootController {
 	public String login(Model model, @RequestParam(name="error", required = false) String error) {
 		generateUsers();
 		model.addAttribute("error", error);
-		return "auth/login";
+		return "admin/login";
 	}
 
 	private void generateUsers() {

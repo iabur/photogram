@@ -1,5 +1,6 @@
 package com.spring5.practice;
 
+import com.spring5.practice.util.Constants;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,9 @@ public class ServletConfig implements WebMvcConfigurer {
 		// Register resource handler for -
 
 		// IMAGES
-		registry.addResourceHandler("/img/**").addResourceLocations("/WEB-INF/resources/img/");
+		registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/resources/images/");
+		// IMAGES
+		registry.addResourceHandler("/img/**").addResourceLocations("file:///"+ Constants.UPLOADED_FOLDER);
 
 		// CSS
 		registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/resources/css/");

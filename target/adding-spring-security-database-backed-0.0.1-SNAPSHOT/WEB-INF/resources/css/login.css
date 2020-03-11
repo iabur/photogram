@@ -1,89 +1,152 @@
-/* Made with love by Mutiullah Samim*/
+* {
+    margin: 0px;
+    padding: 0px;
+}
 
-@import url('https://fonts.googleapis.com/css?family=Numans');
+body {
+    background-color: #eee;
+}
 
-html,body{
-    background-image: url("https://cdn.wallpapersafari.com/93/89/d2CLmo.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+#wrapper {
+    width: 500px;
+    height: 90%;
+    overflow: hidden;
+    border: 0px solid #000;
+    margin: 50px auto;
+    padding: 10px;
+}
+
+#wrapper_login {
+    width: 500px;
+    height: 50%;
+    overflow: hidden;
+    border: 0px solid #000;
+    margin: 50px auto;
+    padding: 10px;
+}
+.main-content_signup {
+    width: 250px;
     height: 100%;
-    font-family: 'Numans', sans-serif;
+    margin: 10px auto;
+    background-color: #fff;
+    border: 2px solid #e6e6e6;
+    padding: 40px 50px;
 }
 
-.container{
-    height: 100%;
-    align-content: center;
+.main-content {
+    width: 250px;
+    height: 50%;
+    margin: 10px auto;
+    background-color: #fff;
+    border: 2px solid #e6e6e6;
+    padding: 40px 50px;
 }
 
-.card{
-    height: 370px;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 400px;
-    background-color: rgba(0,0,0,0.5) !important;
+.header {
+    border: 0px solid #000;
+    margin-bottom: 5px;
 }
 
-.social_icon span{
-    font-size: 60px;
-    margin-left: 10px;
-    color: #FFC312;
+.header img {
+    height: 50px;
+    width: 175px;
+    margin: auto;
+    position: relative;
+    left: 40px;
 }
 
-.social_icon span:hover{
-    color: white;
-    cursor: pointer;
+.input-1,
+.input-2 {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 8px 12px;
+    border: 1px solid #dbdbdb;
+    box-sizing: border-box;
+    border-radius: 3px;
 }
 
-.card-header h3{
-    color: white;
+.overlap-text {
+    position: relative;
 }
 
-.social_icon{
+.overlap-text a {
     position: absolute;
-    right: 20px;
-    top: -45px;
+    top: 8px;
+    right: 10px;
+    color: #003569;
+    font-size: 14px;
+    text-decoration: none;
+    font-family: 'Overpass Mono', monospace;
+    letter-spacing: -1px;
 }
 
-.input-group-prepend span{
-    width: 50px;
-    background-color: #FFC312;
-    color: black;
-    border:0 !important;
+.btn {
+    width: 100%;
+    background-color: #3897f0;
+    border: 1px solid #3897f0;
+    padding: 5px 12px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 3px;
 }
 
-input:focus{
-    outline: 0 0 0 0  !important;
-    box-shadow: 0 0 0 0 !important;
-
+.sub-content {
+    width: 250px;
+    height: 40%;
+    margin: 10px auto;
+    border: 1px solid #e6e6e6;
+    padding: 20px 50px;
+    background-color: #fff;
 }
 
-.remember{
-    color: white;
+.s-part {
+    text-align: center;
+    font-family: 'Overpass Mono', monospace;
+    word-spacing: -3px;
+    letter-spacing: -2px;
+    font-weight: normal;
 }
 
-.remember input
-{
-    width: 20px;
-    height: 20px;
-    margin-left: 15px;
-    margin-right: 5px;
+.s-part a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #3897f0;
+    font-family: 'Overpass Mono', monospace;
+    word-spacing: -3px;
+    letter-spacing: -2px;
+    font-weight: normal;
 }
 
-.login_btn{
-    color: black;
-    background-color: #FFC312;
-    width: 100px;
+input:focus {
+    background-color: yellow;
 }
 
-.login_btn:hover{
-    color: black;
-    background-color: white;
+
+
+
+
+
+
+
+
+
+
+/* youtube link */
+.youtube{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 160px;
+    text-align: center;
+    padding: 15px 10px;
+    background: #bb0000;
+    border-radius: 5px;
 }
 
-.links{
-    color: white;
-}
-
-.links a{
-    margin-left: 4px;
+.youtube a{
+    text-decoration: none;
+    color: #fff;
+    text-transform: capitalize;
+    letter-spacing: 1px;
 }

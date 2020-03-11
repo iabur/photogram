@@ -17,7 +17,7 @@
     <c:forEach items="${countries }" var="country">
         <tr>
             <th>${ country.id }</th>
-            <th>${ country.countryName }</th>
+            <th><img src="${pageContext.request.contextPath}${country.logo}" alt=""></th>
             <td><a href="${pageContext.request.contextPath}/country/edit?id=${country.id}">Update</a></td>
             <td><a href="${pageContext.request.contextPath}/country/delete?id=${country.id}">Delete</a></td>
         </tr>
