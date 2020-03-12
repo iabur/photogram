@@ -1,8 +1,8 @@
-package com.spring5.practice.dtos;
+package com.spring5.practice.requestModel;
 
 import java.io.Serializable;
 
-public class UserDto implements Serializable {
+public class UserRequestModel implements Serializable {
     private long id;
     private String username;
     private String password;
@@ -14,7 +14,7 @@ public class UserDto implements Serializable {
     private String nationality;
     private String occupation;
 
-    public UserDto() {
+    public UserRequestModel() {
     }
 
     public long getId() {

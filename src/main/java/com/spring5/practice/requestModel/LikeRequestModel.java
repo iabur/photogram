@@ -1,16 +1,16 @@
-package com.spring5.practice.dtos;
+package com.spring5.practice.requestModel;
 
 import com.spring5.practice.model.Post;
 import com.spring5.practice.model.User;
 
 import java.io.Serializable;
 
-public class LikeDto implements Serializable {
+public class LikeRequestModel implements Serializable {
     private Long id;
     private Post post;
     private User user;
 
-    public LikeDto() {
+    public LikeRequestModel() {
     }
 
     public Long getId() {

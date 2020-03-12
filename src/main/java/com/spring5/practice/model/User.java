@@ -4,6 +4,9 @@ import com.spring5.practice.enums.Role;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_user")
@@ -33,8 +36,24 @@ public class User implements Serializable {
     private String nationality;
     @Column(name = "occupation")
     private String occupation;
+    @Column(name = "createdAt", updatable = true, nullable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updatedAt", updatable = true, nullable = true)
+    private LocalDateTime updatedAt;
+
+    @ElementCollection(fetch=FetchType.LAZY)
+    @CollectionTable(name = "following")
+    private List<Long> following =  new ArrayList<>();
+
+    @ElementCollection(fetch=FetchType.LAZY)
+    @CollectionTable(name = "followed_by")
+    private List<Long> followedBy =  new ArrayList<>();
 
 
+
+    public User() {
+    }
 
     public long getId() {
         return id;
@@ -122,5 +141,37 @@ public class User implements Serializable {
 
     public void setOccupation(String occupation) {
         this.occupation = occupation;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public List<Long> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(List<Long> following) {
+        this.following = following;
+    }
+
+    public List<Long> getFollowedBy() {
+        return followedBy;
+    }
+
+    public void setFollowedBy(List<Long> followedBy) {
+        this.followedBy = followedBy;
     }
 }

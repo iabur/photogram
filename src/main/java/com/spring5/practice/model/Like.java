@@ -8,11 +8,14 @@ public class Like implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @Column(name="is_active", nullable = true)
-    private Boolean active;
+
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "post_id")
     private Post post;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Like() {
     }
@@ -25,19 +28,19 @@ public class Like implements Serializable {
         this.id = id;
     }
 
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
     public Post getPost() {
         return post;
     }
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

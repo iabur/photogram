@@ -1,31 +1,21 @@
-package com.spring5.practice.model;
+package com.spring5.practice.requestModel;
 
-import javax.persistence.*;
+import com.spring5.practice.model.Post;
+import com.spring5.practice.model.User;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "tbl_comment")
-public class Comment implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+public class CommentRequestModel implements Serializable {
     private Long id;
-
-    @Column(name = "post_comment", nullable = true)
     private String comment;
-
-    @ManyToOne
-    @JoinColumn(name = "post_id")
     private Post post;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    private Long postId;
     private User user;
-
-    @Column(name = "comment_time", updatable = false, nullable = false)
+    private Long userId;
     private LocalDate commentTime;
 
-    public Comment() {
+    public CommentRequestModel() {
     }
 
     public Long getId() {
@@ -52,12 +42,28 @@ public class Comment implements Serializable {
         this.post = post;
     }
 
+    public Long getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Long postId) {
+        this.postId = postId;
+    }
+
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public LocalDate getCommentTime() {

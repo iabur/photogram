@@ -1,27 +1,24 @@
-package com.spring5.practice.dtos;
+package com.spring5.practice.requestModel;
 
 import com.spring5.practice.model.Comment;
 import com.spring5.practice.model.Like;
-import com.spring5.practice.model.User;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
 
-public class PostDto implements Serializable {
+public class PostRequestModel implements Serializable {
     private Long id;
     private String caption;
     private List<String> images;
-    private User user;
     private List<Comment> comments;
     private List<Like> likes;
-    private LocalDate postTime;
-    private String postTimeString;
+    private List<MultipartFile> multipartFiles;
     private Long totalLike;
     private Long totalComment;
     private Boolean isliked;
 
-    public PostDto() {
+    public PostRequestModel() {
     }
 
     public Long getId() {
@@ -48,14 +45,6 @@ public class PostDto implements Serializable {
         this.images = images;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public List<Comment> getComments() {
         return comments;
     }
@@ -72,20 +61,12 @@ public class PostDto implements Serializable {
         this.likes = likes;
     }
 
-    public LocalDate getPostTime() {
-        return postTime;
+    public List<MultipartFile> getMultipartFiles() {
+        return multipartFiles;
     }
 
-    public void setPostTime(LocalDate postTime) {
-        this.postTime = postTime;
-    }
-
-    public String getPostTimeString() {
-        return postTimeString;
-    }
-
-    public void setPostTimeString(String postTimeString) {
-        this.postTimeString = postTimeString;
+    public void setMultipartFiles(List<MultipartFile> multipartFiles) {
+        this.multipartFiles = multipartFiles;
     }
 
     public Long getTotalLike() {
