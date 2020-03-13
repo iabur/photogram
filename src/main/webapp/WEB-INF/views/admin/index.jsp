@@ -13,9 +13,7 @@
 <nav class="navbar navbar-light sticky-top bg-light">
     <a class="navbar-brand" href="#"><i class="fab fa-instagram"></i> Instagram</a>
     <ul class="nav ">
-        <li class="nav-item">
-            <button type="button" class="btn btn-primary btn-md btn-success"data-toggle="modal" data-target="#exampleModal">Create a new post</button>
-        </li>
+
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-cogs"></i></a>
             <div class="dropdown-menu dropdown-menu-right">
@@ -28,33 +26,17 @@
     </ul>
 </nav>
 
-<!-- Modal Begin -->
-<form:form action="${pageContext.request.contextPath}/createPost" modelAttribute="addPost" enctype="multipart/form-data">
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
 
-            <input class="modal-body ">
-                <form:textarea path="caption" class="form-control" aria-label="With textarea"/>
-                <!--<input class="form-control mr-sm-2 custom-search-modal" type="search" placeholder="" aria-label="Search">-->
-                <input type="file" name="file"><i class="fas fa-camera-retro p-1 border rounded mt-1" ></i></input>
-                <i class="fas fa-map-marker-alt p-1 border rounded mt-1" ></i>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
-                <input type="submit" name="submit" class="btn btn-success btn-sm">Publish</input>
-            </div>
-            </form:form>
-        </div>
-    </div>
-</div> <!-- modal end -->
-
+<div style="margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;">
 <form:form action="${pageContext.request.contextPath}/createPost" modelAttribute="addPost" enctype="multipart/form-data">
-    <form:input path="caption" />
-    <input type="file" name="files" class="form-control">
+    <form:input placeholder = "Create a new post"  path="caption" cssStyle="height: 100px; width: 100%;" />
+    <input type="file" name="files" class="form-control" style="width: 100%;">
     <input type="submit" name="submit" value="submit">
 </form:form>
-
+</div>
 <div class="container-fluid ">
     <!-- Nav pills -->
     <ul class="nav nav-pills justify-content-center mt-4" role="tablist">
@@ -84,12 +66,13 @@
 
                         <img class="card-img" src="${pageContext.request.contextPath}${post.image}" alt="Card image cap">
 
-                        <div class="card-body px-3">
-                            <h5 class="card-title">1000 Likes</h5>
-
-                        </div>
+                        <br>
+                        <br>
                         <div class="row post-header px-3 pb-3">
+                            <form:form action="${pageContext.request.contextPath}/addLike" modelAttribute="like">
+
                             <div style="color: red" class="col-1 float-left text-left"><i class="far fa-heart"></i></i></div>
+                            </form:form>
                             <div class="col-10 float-left text-left">
                                     <%--Add a new comment--%>
 
@@ -99,8 +82,9 @@
                                     </button>
                                 </div>--%>
                                             <%--add a comment using form--%>
-                                        <form:form action="${pageContext.request.contextPath}/createComment" modelAttribute="newComment">
-                                            <form:textarea path="commentText" />
+
+                                        <form:form action="${pageContext.request.contextPath}/createComment" modelAttribute="newComment" cssStyle="width: 500px">
+                                            <form:textarea path="commentText" placeholder = "add a comment" cssStyle="width: 300px"/>
                                             <form:input path="userId" value = "${currentUser.id}" hidden = "hidden"/>
                                             <form:input path="postId" value = "${post.id}" hidden = "hidden" />
                                             <input type="submit" value="post">
@@ -137,141 +121,7 @@
                         </div>
                     </div>
  </c:forEach>
-                    <div class="card mx-auto custom-card mt-3" id="prova">
-                        <div class="row post-header col-12 py-2 px-3">
-                            <div class="col-6 float-left "><h4>My Second post</h4></div>
-                            <div class="col-6 float-right text-right post-number"><h4>12/14</h4></div>
-                        </div>
-                        <img class="card-img" src="https://assets.breatheco.de/apis/img/funny/kids.jpg" alt="Card image cap">
-                        <div class="card-body px-3">
-                            <h5 class="card-title">1000 Likes</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <div class="row post-header px-3 pb-3">
-                            <div class="col-1 float-left text-left"><i class="far fa-heart"></i></i></div>
-                            <div class="col-10 float-left text-left">Comment...</div>
-                            <div class="col-1 float-right text-right"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
-                        </div>
-                    </div>
 
-                    <div class="card mx-auto custom-card mt-3" id="prova">
-                        <div class="row post-header col-12 py-2 px-3">
-                            <div class="col-6 float-left "><h4>My Third post</h4></div>
-                            <div class="col-6 float-right text-right post-number"><h4>12/14</h4></div>
-                        </div>
-                        <img class="card-img" src="https://assets.breatheco.de/apis/img/happy/bucket.jpeg" alt="Card image cap">
-                        <div class="card-body px-3">
-                            <h5 class="card-title">1000 Likes</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <div class="row post-header px-3 pb-3">
-                            <div class="col-1 float-left text-left"><i class="far fa-heart"></i></i></div>
-                            <div class="col-10 float-left text-left">Comment...</div>
-                            <div class="col-1 float-right text-right"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
-                        </div>
-                    </div>
-
-                    <div class="card mx-auto custom-card mt-3" id="prova">
-                        <div class="row post-header col-12 py-2 px-3">
-                            <div class="col-6 float-left "><h4>My fourth post</h4></div>
-                            <div class="col-6 float-right text-right post-number"><h4>12/14</h4></div>
-                        </div>
-                        <img class="card-img" src="https://assets.breatheco.de/apis/img/funny/rigoberto.jpg" alt="Card image cap">
-                        <div class="card-body px-3">
-                            <h5 class="card-title">1000 Likes</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <div class="row post-header px-3 pb-3">
-                            <div class="col-1 float-left text-left"><i class="far fa-heart"></i></i></div>
-                            <div class="col-10 float-left text-left">Comment...</div>
-                            <div class="col-1 float-right text-right"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
-                        </div>
-                    </div>
-
-                    <div class="card mx-auto custom-card mt-3" id="prova">
-                        <div class="row post-header col-12 py-2 px-3">
-                            <div class="col-6 float-left "><h4>My fifth post</h4></div>
-                            <div class="col-6 float-right text-right post-number"><h4>12/14</h4></div>
-                        </div>
-                        <img class="card-img" src="https://assets.breatheco.de/apis/img/meme/borat.success.jpg" alt="Card image cap">
-                        <div class="card-body px-3">
-                            <h5 class="card-title">1000 Likes</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <div class="row post-header px-3 pb-3">
-                            <div class="col-1 float-left text-left"><i class="far fa-heart"></i></i></div>
-                            <div class="col-10 float-left text-left">Comment...</div>
-                            <div class="col-1 float-right text-right"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
-                        </div>
-                    </div>
-
-                    <div class="card mx-auto custom-card mt-3" id="prova">
-                        <div class="row post-header col-12 py-2 px-3">
-                            <div class="col-6 float-left "><h4>My sixth post</h4></div>
-                            <div class="col-6 float-right text-right post-number"><h4>12/14</h4></div>
-                        </div>
-                        <img class="card-img" src="https://assets.breatheco.de/apis/img/meme/baby.success.jpg" alt="Card image cap">
-                        <div class="card-body px-3">
-                            <h5 class="card-title">1000 Likes</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <div class="row post-header px-3 pb-3">
-                            <div class="col-1 float-left text-left"><i class="far fa-heart"></i></i></div>
-                            <div class="col-10 float-left text-left">Comment...</div>
-                            <div class="col-1 float-right text-right"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
-                        </div>
-                    </div>
-
-                    <div class="card mx-auto custom-card mt-3" id="prova">
-                        <div class="row post-header col-12 py-2 px-3">
-                            <div class="col-6 float-left "><h4>My seventh post</h4></div>
-                            <div class="col-6 float-right text-right post-number"><h4>12/14</h4></div>
-                        </div>
-                        <img class="card-img" src="https://assets.breatheco.de/apis/img/funny/scared-baby.jpg" alt="Card image cap">
-                        <div class="card-body px-3">
-                            <h5 class="card-title">1000 Likes</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <div class="row post-header px-3 pb-3">
-                            <div class="col-1 float-left text-left"><i class="far fa-heart"></i></i></div>
-                            <div class="col-10 float-left text-left">Comment...</div>
-                            <div class="col-1 float-right text-right"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
-                        </div>
-                    </div>
-
-                    <div class="card mx-auto custom-card mt-3" id="prova">
-                        <div class="row post-header col-12 py-2 px-3">
-                            <div class="col-6 float-left "><h4>My eighth post</h4></div>
-                            <div class="col-6 float-right text-right post-number"><h4>12/14</h4></div>
-                        </div>
-                        <img class="card-img" src="https://assets.breatheco.de/apis/img/happy/happy-dog2.jpg" alt="Card image cap">
-                        <div class="card-body px-3">
-                            <h5 class="card-title">1000 Likes</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <div class="row post-header px-3 pb-3">
-                            <div class="col-1 float-left text-left"><i class="far fa-heart"></i></i></div>
-                            <div class="col-10 float-left text-left">Comment...</div>
-                            <div class="col-1 float-right text-right"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
-                        </div>
-                    </div>
-
-                    <div class="card mx-auto custom-card mt-3" id="prova">
-                        <div class="row post-header col-12 py-2 px-3">
-                            <div class="col-6 float-left "><h4>My ninth post</h4></div>
-                            <div class="col-6 float-right text-right post-number"><h4>12/14</h4></div>
-                        </div>
-                        <img class="card-img" src="https://assets.breatheco.de/apis/img/happy/happy-dog.jpg" alt="Card image cap">
-                        <div class="card-body px-3">
-                            <h5 class="card-title">1000 Likes</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <div class="row post-header px-3 pb-3">
-                            <div class="col-1 float-left text-left"><i class="far fa-heart"></i></i></div>
-                            <div class="col-10 float-left text-left">Comment...</div>
-                            <div class="col-1 float-right text-right"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
-                        </div>
-                    </div>
 
                 </div>
             </div>

@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="adding-spring-security-database-backed-0.0.1-SNAPSHOT.war">
+    <root id="archive" name="photogram-0.0.1-SNAPSHOT.war">
       <element id="artifact" artifact-name="adding-spring-security-database-backed:war exploded" />
     </root>
   </artifact>
