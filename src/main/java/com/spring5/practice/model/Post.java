@@ -15,19 +15,22 @@ public class Post implements Serializable {
     @Column(name = "post_caption", nullable = true)
     private String caption;
 
-    @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "post_images")
-    private List<String> images = new ArrayList<>();
+    @Column(name = "post_image", nullable = true)
+    private String image;
 
     @ManyToOne
     @JoinColumn(name = "owner")
     private User user;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "post")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "post")
     private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "post",  cascade = CascadeType.ALL)
-    private List<Like> likes = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "like_id")
+    private Like like;
+
+    @JoinColumn(name = "total_like")
+    private Long totalLikes;
 
     @Column(name = "post_time", updatable = false, nullable = false)
     private LocalDate postTime;
@@ -59,12 +62,20 @@ public class Post implements Serializable {
         this.user = user;
     }
 
-    public List<String> getImages() {
-        return images;
+    public String getImage() {
+        return image;
     }
 
-    public void setImages(List<String> images) {
-        this.images = images;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Like getLike() {
+        return like;
+    }
+
+    public void setLike(Like like) {
+        this.like = like;
     }
 
     public List<Comment> getComments() {
@@ -75,13 +86,7 @@ public class Post implements Serializable {
         this.comments = comments;
     }
 
-    public List<Like> getLikes() {
-        return likes;
-    }
 
-    public void setLikes(List<Like> likes) {
-        this.likes = likes;
-    }
 
     public LocalDate getPostTime() {
         return postTime;
@@ -89,5 +94,13 @@ public class Post implements Serializable {
 
     public void setPostTime(LocalDate postTime) {
         this.postTime = postTime;
+    }
+
+    public Long getTotalLikes() {
+        return totalLikes;
+    }
+
+    public void setTotalLikes(Long totalLikes) {
+        this.totalLikes = totalLikes;
     }
 }

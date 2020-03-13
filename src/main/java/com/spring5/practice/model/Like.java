@@ -17,6 +17,10 @@ public class Like implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Column( name = "is_active")
+    private Boolean isActive;
+
+
     public Like() {
     }
 
@@ -43,4 +47,13 @@ public class Like implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
 }

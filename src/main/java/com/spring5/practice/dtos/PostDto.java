@@ -111,4 +111,21 @@ public class PostDto implements Serializable {
     public void setIsliked(Boolean isliked) {
         this.isliked = isliked;
     }
+
+    @Override
+    public String toString() {
+        return "PostDto{" +
+                "id=" + id +
+                ", caption='" + caption + '\'' +
+                ", images=" + images +
+                ", user=" + user +
+                ", comments=" + comments +
+                ", likes=" + likes +
+                ", postTime=" + postTime +
+                ", postTimeString='" + postTimeString + '\'' +
+                ", totalLike=" + totalLike +
+                ", totalComment=" + totalComment +
+                ", isliked=" + isliked +
+                '}';
+    }
 }

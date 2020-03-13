@@ -36,7 +36,7 @@ public class User implements Serializable {
     private String nationality;
     @Column(name = "occupation")
     private String occupation;
-    @Column(name = "createdAt", updatable = true, nullable = false)
+    @Column(name = "createdAt", updatable = true, nullable = true)
     private LocalDateTime createdAt;
 
     @Column(name = "updatedAt", updatable = true, nullable = true)

@@ -93,4 +93,9 @@ public class UserService implements UserDetailsService {
         previousUser.setPhoto("/img/"+file.getOriginalFilename());
         userRepository.save(previousUser);
     }
+
+    public com.spring5.practice.model.User findByid(Long id)
+    {
+        return userRepository.findById(id).get();
+    }
 }

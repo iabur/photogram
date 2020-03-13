@@ -22,7 +22,7 @@ public class Comment implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "comment_time", updatable = false, nullable = false)
+    @Column(name = "comment_time", updatable = false, nullable = true)
     private LocalDate commentTime;
 
     public Comment() {
